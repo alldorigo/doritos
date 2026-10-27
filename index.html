@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>All App’s DORITOS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bowlby+One&family=Paytone+One&family=Rubik:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#E8420F; --accent:#FFC20E; --ink:#1A0A05; --paper:#FFF4E0; --card:#FFFFFF; --text:#1A0A05; --muted:#5b3a2c;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#241109;--card:#33190d;--text:#FFF4E0;--muted:#e6c3a8}}
+:root[data-theme="dark"]{--paper:#241109;--card:#33190d;--text:#FFF4E0;--muted:#e6c3a8}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;font-family:Rubik,system-ui,sans-serif;background:var(--paper);color:var(--text);overflow-x:hidden}
+.display{font-family:"Bowlby One",Impact,"Arial Black",sans-serif;font-weight:400;line-height:.95}
+.tri{clip-path:polygon(50% 0,100% 100%,0 100%)}
+/* hero */
+.hero{position:relative;background:var(--bg);color:#fff;padding:26px 24px 110px;overflow:hidden;transition:background .5s;min-height:94vh;
+  background-image:radial-gradient(circle at 85% 20%,rgba(255,255,255,.22),transparent 45%),radial-gradient(circle at 5% 95%,rgba(0,0,0,.25),transparent 40%)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:70px;background:var(--paper);clip-path:polygon(0 100%,100% 100%,100% 0,92% 60%,84% 10%,76% 70%,68% 15%,60% 65%,52% 5%,44% 60%,36% 15%,28% 70%,20% 10%,12% 60%,4% 20%,0 55%)}
+nav{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;position:relative;z-index:3}
+.logo{font-family:"Bowlby One",Impact,sans-serif;font-size:1.15rem;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo::before{content:"";width:26px;height:26px;background:var(--accent);clip-path:polygon(50% 0,100% 100%,0 100%);transition:background .5s}
+.btn{display:inline-block;background:var(--accent);color:var(--ink);font-weight:700;padding:15px 28px;border-radius:999px;text-decoration:none;border:3px solid var(--ink);font-size:1rem;cursor:pointer;box-shadow:0 5px 0 var(--ink);transition:transform .15s,box-shadow .15s,background .5s}
+.btn:hover{transform:translateY(3px);box-shadow:0 2px 0 var(--ink)}
+.btn.alt{background:#fff}
+.btn:focus-visible,.flv:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-top:56px}
+h1{font-size:clamp(3rem,8.5vw,6.4rem);margin:0 0 22px;text-shadow:5px 5px 0 var(--ink);letter-spacing:-.01em}
+.lead{font-size:1.2rem;max-width:30em;margin:0 0 30px;line-height:1.55}
+.stores{display:flex;gap:16px;flex-wrap:wrap}
+.chip{position:absolute;width:var(--s);aspect-ratio:1;background:var(--c);clip-path:polygon(50% 0,100% 100%,0 100%);left:var(--x);top:-120px;z-index:1;opacity:.95;animation:fall 1.4s cubic-bezier(.3,1.4,.5,1) forwards;animation-delay:var(--d);transform:rotate(var(--r))}
+@keyframes fall{to{top:var(--y)}}
+/* janela */
+.win{background:var(--paper);color:var(--text);border:3px solid var(--ink);border-radius:22px;box-shadow:12px 14px 0 var(--ink);transform:rotate(-2.5deg);overflow:hidden;width:100%;max-width:470px;justify-self:center}
+.win .top{background:var(--ink);padding:12px 16px;display:flex;gap:7px;align-items:center}
+.win .top i{width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.win .top i:nth-child(2){opacity:.6}.win .top i:nth-child(3){opacity:.3}
+.win .top span{margin-left:10px;color:#fff;font-size:.8rem;opacity:.8}
+.win .body{padding:20px;display:grid;gap:12px}
+.row{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px;font-size:.92rem;line-height:1.3}
+.row i{width:28px;height:28px;flex:none;background:var(--bg);clip-path:polygon(50% 0,100% 100%,0 100%);transition:background .5s}
+.row em{margin-left:auto;font-style:normal;background:var(--accent);color:var(--ink);font-weight:700;font-size:.75rem;padding:4px 11px;border-radius:999px;transition:background .5s}
+.chart{display:flex;align-items:flex-end;gap:9px;height:84px;padding:4px 4px 0;border-bottom:3px solid var(--ink)}
+.chart b{flex:1;background:var(--bg);border-radius:7px 7px 0 0;transition:background .5s}
+.saved{font-weight:700;font-size:.9rem}
+/* faixa */
+.strip{background:var(--ink);color:#fff;padding:20px 24px;display:flex;gap:14px 34px;justify-content:center;flex-wrap:wrap;font-family:"Bowlby One",Impact,sans-serif;font-size:1.05rem}
+.strip span{display:flex;align-items:center;gap:12px}
+.strip span::before{content:"";width:16px;height:16px;background:var(--accent);clip-path:polygon(50% 0,100% 100%,0 100%)}
+/* seções */
+section{max-width:1100px;margin:0 auto;padding:70px 24px}
+h2{font-size:clamp(2rem,5vw,3.4rem);margin:0 0 14px}
+.sub{color:var(--muted);font-size:1.15rem;margin:0 0 36px;max-width:36em}
+.flvs{display:flex;gap:14px;flex-wrap:wrap}
+.flv{border:3px solid var(--ink);background:var(--card);color:var(--text);border-radius:999px;padding:14px 24px;font:700 1rem Rubik,sans-serif;cursor:pointer;display:flex;align-items:center;gap:12px;box-shadow:0 4px 0 var(--ink);transition:transform .15s,box-shadow .15s,background .15s}
+.flv:hover{transform:translateY(-3px);box-shadow:0 7px 0 var(--ink)}
+.flv[aria-pressed="true"]{background:var(--bg);color:#fff;transform:translateY(2px);box-shadow:0 2px 0 var(--ink)}
+.flv i{width:24px;height:24px;background:var(--k);clip-path:polygon(50% 0,100% 100%,0 100%);outline:0}
+.flv[aria-pressed="true"] i{background:#fff}
+.out{background:var(--card);border:3px solid var(--ink);border-radius:30px;padding:28px;margin-top:30px;display:flex;gap:26px;align-items:center;box-shadow:8px 8px 0 var(--ink)}
+.out .big{width:92px;height:92px;flex:none;background:var(--bg);clip-path:polygon(50% 0,100% 100%,0 100%);transition:background .5s}
+.out h3{font-family:"Bowlby One",sans-serif;font-weight:400;margin:0 0 8px;font-size:1.5rem}
+.out p{margin:0;color:var(--muted);line-height:1.6;font-size:1.05rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
+.card{background:var(--card);border:3px solid var(--ink);border-radius:30px;padding:28px;box-shadow:6px 6px 0 var(--ink)}
+.num{width:62px;height:58px;background:var(--bg);clip-path:polygon(50% 0,100% 100%,0 100%);display:grid;place-items:end center;color:#fff;font-family:"Bowlby One",sans-serif;font-size:1.3rem;padding-bottom:6px;margin-bottom:18px;transition:background .5s}
+.card h3{font-family:"Bowlby One",sans-serif;font-weight:400;font-size:1.4rem;margin:0 0 10px}
+.card p{margin:0;color:var(--muted);line-height:1.55}
+.cta{position:relative;overflow:hidden;background:var(--bg);color:#fff;text-align:center;border-radius:40px;padding:72px 24px;transition:background .5s;border:3px solid var(--ink);box-shadow:10px 10px 0 var(--ink)}
+.cta::before,.cta::after{content:"";position:absolute;background:var(--accent);clip-path:polygon(50% 0,100% 100%,0 100%);opacity:.9}
+.cta::before{width:90px;height:90px;left:5%;top:14%;transform:rotate(-20deg)}
+.cta::after{width:60px;height:60px;right:7%;bottom:16%;transform:rotate(25deg)}
+.cta>*{position:relative;z-index:2}
+.cta h2{text-shadow:4px 4px 0 var(--ink)}
+footer{text-align:center;padding:30px 24px 60px;color:var(--muted);font-size:.9rem}
+.sharp .card,.sharp .out,.sharp .cta,.sharp .win,.sharp .row{border-radius:6px}.sharp .btn,.sharp .flv{border-radius:8px}
+@media(max-width:820px){.cta::before,.cta::after{display:none}.wrap{grid-template-columns:1fr}.win{transform:none}.hero{padding-bottom:100px}.out{flex-direction:column;text-align:center}}
+@media(prefers-reduced-motion:reduce){.chip{animation:none;top:var(--y)}*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  
+  
+  
+  
+  
+  <nav><a class="logo" href="#">All App’s DORITOS</a><a class="btn alt" href="#contato">Pedir orçamento</a></nav>
+  <div class="wrap">
+    <div>
+      <h1 class="display">Automatize.<br>Ganhe tempo.</h1>
+      <p class="lead">Desenvolvo plataformas web sob medida para automatizar processos, reduzir erros e liberar o seu tempo. Da análise da necessidade à entrega do sistema em produção.</p>
+      <div class="stores"><a class="btn" href="#contato">Pedir orçamento</a><a class="btn alt" href="#sabores">Ver projetos</a></div>
+    </div>
+    <div class="win" aria-hidden="true">
+      <div class="top"><i></i><i></i><i></i><span>Painel</span></div>
+      <div class="body">
+        <div class="row"><i></i><div>Lavanderia<br><small>3 máquinas livres</small></div><em>Ao vivo</em></div>
+        <div class="row"><i></i><div>Simulados<br><small>120 corrigidos</small></div><em>Pronto</em></div>
+        <div class="row"><i></i><div>Banheiro<br><small>Controle e gráficos</small></div><em>Ao vivo</em></div>
+        <div class="chart"><b style="height:30%"></b><b style="height:48%"></b><b style="height:42%"></b><b style="height:70%"></b><b style="height:88%"></b></div>
+        <div class="saved">Horas economizadas: 38</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip"><span>Lavanderia coletiva</span><span>Correção de simulados</span><span>Banheiro escolar</span><span>Páginas de internet</span></div>
+
+<section id="sabores">
+  <h2 class="display">Soluções desenvolvidas</h2>
+  <p class="sub">Projetos que já entreguei, cada um criado para eliminar uma tarefa manual.</p>
+  <div class="flvs" role="group" aria-label="Projetos">
+    <button class="flv" aria-pressed="true" data-bg="#E8420F" data-ac="#FFC20E" data-t="Lavanderia coletiva" data-d="Reserva de horários pelo celular e controle de uso das máquinas, sem disputas e sem anotações em papel." style="--k:#E8420F"><i></i>Lavanderia coletiva</button>
+    <button class="flv" aria-pressed="false" data-bg="#0B5FC4" data-ac="#7FE0FF" data-t="Correção de simulados externos" data-d="Correção de gabaritos por foto, com resultado imediato e sem conferência manual." style="--k:#0B5FC4"><i></i>Correção de simulados</button>
+    <button class="flv" aria-pressed="false" data-bg="#C4101F" data-ac="#FFB703" data-t="Banheiro escolar" data-d="Registro das saídas dos alunos na palma da mão, com controle e gráficos em tempo real." style="--k:#C4101F"><i></i>Banheiro escolar</button>
+    <button class="flv" aria-pressed="false" data-bg="#B86E00" data-ac="#FFF1A8" data-t="Páginas de internet" data-d="Sites rápidos, responsivos e fáceis de atualizar, como esta página que você está vendo." style="--k:#B86E00"><i></i>Páginas de internet</button>
+    <button class="flv" aria-pressed="false" data-bg="#1A7F4B" data-ac="#B8F2C9" data-t="Algo novo para o seu caso" data-d="Realiza uma tarefa repetitiva com frequência? Descreva o processo e eu desenvolvo um sistema para automatizá-lo." style="--k:#1A7F4B"><i></i>Algo novo</button>
+  </div>
+  <div class="out" aria-live="polite"><div class="big" aria-hidden="true"></div><div><h3 id="ot">Lavanderia coletiva</h3><p id="od">Reserva de horários pelo celular e controle de uso das máquinas, sem disputas e sem anotações em papel.</p></div></div>
+</section>
+
+<section>
+  <h2 class="display">Como funciona</h2>
+  <p class="sub">Do levantamento ao sistema em produção, em três etapas.</p>
+  <div class="grid">
+    <div class="card"><div class="num">1</div><h3>Levantamento</h3><p>Entendo o seu processo e defino o que o sistema precisa fazer.</p></div>
+    <div class="card"><div class="num">2</div><h3>Protótipo</h3><p>Você valida as telas e o funcionamento antes do desenvolvimento e pede os ajustes.</p></div>
+    <div class="card"><div class="num">3</div><h3>Entrega e suporte</h3><p>Desenvolvo, testo, coloco o sistema no ar e dou suporte depois da entrega.</p></div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="cta">
+    <h2 class="display">Vamos automatizar o seu processo?</h2>
+    <p class="lead" style="margin:0 auto 28px">Descreva o que é feito manualmente hoje e receba uma proposta sem compromisso.</p>
+    <div class="stores" style="justify-content:center"><a class="btn" href="https://wa.me/5519993210370?text=Ol%C3%A1!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20automatizar%20os%20meus%20servi%C3%A7os%20manuais.%20Podemos%20conversar%20sobre%20um%20or%C3%A7amento%3F">Chamar no WhatsApp</a></div>
+  </div>
+</section>
+<footer>All App’s DORITOS · Plataformas web sob medida</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.flv'),r=document.documentElement,t=document.getElementById('ot'),d=document.getElementById('od');
+  var P=[['#E8420F','#FFC20E'],['#0B5FC4','#7FE0FF'],['#C4101F','#FFB703'],['#1A7F4B','#B8F2C9'],['#6B2FD6','#FFD84D'],['#D6246E','#FFE066'],['#0A7E8C','#FFD166']],F=['Bowlby One','Archivo Black','Paytone One'];
+  var pk=function(a){return a[Math.floor(Math.random()*a.length)]},p=pk(P),f=pk(F);
+  r.style.setProperty('--bg',p[0]);r.style.setProperty('--accent',p[1]);
+  if(Math.random()<.5)r.classList.add('sharp');
+  var st=document.createElement('style');st.textContent='.display,.logo,.strip,.out h3,.card h3,.num{font-family:"'+f+'",Impact,sans-serif!important}';document.head.appendChild(st);
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true');
+      r.style.setProperty('--bg',b.dataset.bg);
+      r.style.setProperty('--accent',b.dataset.ac);
+      t.textContent=b.dataset.t;d.textContent=b.dataset.d;
+    });
+  });
+})();
+</script>
+</body>
+</html>
